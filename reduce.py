@@ -1,3 +1,5 @@
+import sys
+
 # mode = 'ring-allreduce'
 
 # TODO Implement using actual separate processes using subprocessing
@@ -18,7 +20,14 @@ m = len(proc)   # number of processes
 
 steps = 2 * (m-1)
 
-reduce = sum
+# Only sum and max are supported at the moment
+if sys.argv[1] == 'sum':
+    reduce = sum
+elif sys.argv[1] == 'max':
+    reduce = max
+else:
+    raise SystemExit(f'Unsupported operation `{sys.argv[1]}\'')
+
 
 # The algorithm has two major stages:
 #   1. send elements around and store their sums  (for the first m-1 iteration steps)
