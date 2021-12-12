@@ -9,5 +9,6 @@ algorithms for distributed computing.
 Running the code for *Ring-AllReduce*:
 
 ```
-python reduce.py
+python reduce.py sum
+python reduce.py max
 ```
